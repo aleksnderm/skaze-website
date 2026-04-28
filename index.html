@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Skaze – the platform for visual creators, photographers, and digital artists. Find beauty in imperfection." />
+  <title>Skaze – Find Beauty in Imperfection</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════ -->
+  <header class="navbar">
+    <div class="container navbar__inner">
+      <a href="index.html" class="navbar__logo" aria-label="Skaze home">
+        skaze<span class="dot">.</span>
+      </a>
+
+      <nav aria-label="Main navigation">
+        <ul class="navbar__links" id="navLinks">
+          <li><a href="#about">About</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#download" class="navbar__cta">Download</a></li>
+        </ul>
+      </nav>
+
+      <button class="navbar__hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ══════════════════════════════════════
+         HERO
+    ══════════════════════════════════════ -->
+    <section class="hero pixel-bg" aria-label="Hero">
+      <div class="container">
+        <div class="hero__content">
+          <div class="hero__eyebrow">
+            <span class="hero__eyebrow-line" aria-hidden="true"></span>
+            <span class="hero__eyebrow-text">For Visual Creators</span>
+          </div>
+
+          <h1 class="hero__headline">
+            Find beauty<br />
+            in <span class="accent-red">imperfection</span><span class="accent">.</span>
+          </h1>
+
+          <p class="hero__sub">
+            Every pixel represents a creator in a larger ecosystem. Skaze is the
+            platform where photographers, illustrators, and digital artists
+            share work that's raw, real, and uniquely theirs.
+          </p>
+
+          <div class="hero__cta-group">
+            <a href="#download" class="btn btn-primary btn-store" aria-label="Download on the App Store">
+              <span class="btn-store__label">Download on the</span>
+              <span class="btn-store__name">App Store</span>
+            </a>
+            <a href="#download" class="btn btn-outline btn-store" aria-label="Get it on Google Play">
+              <span class="btn-store__label">Get it on</span>
+              <span class="btn-store__name">Google Play</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Decorative pixel grid -->
+        <div class="hero__pixel-accent" aria-hidden="true">
+          <div class="px"></div><div class="px mid"></div><div class="px"></div><div class="px active"></div><div class="px"></div><div class="px mid"></div>
+          <div class="px mid"></div><div class="px active"></div><div class="px mid"></div><div class="px"></div><div class="px active"></div><div class="px"></div>
+          <div class="px active"></div><div class="px"></div><div class="px active"></div><div class="px mid"></div><div class="px red"></div><div class="px active"></div>
+          <div class="px"></div><div class="px mid"></div><div class="px"></div><div class="px active"></div><div class="px"></div><div class="px mid"></div>
+          <div class="px mid"></div><div class="px active"></div><div class="px mid"></div><div class="px"></div><div class="px active"></div><div class="px"></div>
+          <div class="px active"></div><div class="px"></div><div class="px mid"></div><div class="px active"></div><div class="px"></div><div class="px mid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         ABOUT
+    ══════════════════════════════════════ -->
+    <section class="about section" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <div class="about__grid">
+
+          <!-- Visual: pixel mosaic -->
+          <div class="about__visual" aria-hidden="true">
+            <!-- Row 1 -->
+            <div class="tile lit"></div><div class="tile mid"></div><div class="tile lit"></div><div class="tile"></div><div class="tile mid"></div>
+            <!-- Row 2 -->
+            <div class="tile mid"></div><div class="tile lit"></div><div class="tile"></div><div class="tile lit"></div><div class="tile mid"></div>
+            <!-- Row 3 -->
+            <div class="tile lit"></div><div class="tile"></div><div class="tile flaw"></div><div class="tile mid"></div><div class="tile lit"></div>
+            <!-- Row 4 -->
+            <div class="tile mid"></div><div class="tile lit"></div><div class="tile mid"></div><div class="tile lit"></div><div class="tile"></div>
+            <!-- Row 5 -->
+            <div class="tile"></div><div class="tile mid"></div><div class="tile lit"></div><div class="tile"></div><div class="tile mid"></div>
+          </div>
+
+          <!-- Copy -->
+          <div class="about__copy">
+            <span class="section-label">Our Philosophy</span>
+            <h2 class="section-title" id="about-title">
+              Not every pixel needs to be perfect.
+            </h2>
+            <p class="section-body">
+              At Skaze, we believe that creativity lives in the spaces between
+              perfection — in the grain of a photograph, the rough stroke of a
+              digital brush, the off-beat composition that stops you mid-scroll.
+              Each imperfection is a fingerprint, a mark of human intent that
+              no algorithm can replicate.
+            </p>
+            <p class="section-body" style="margin-top: 16px;">
+              Every creator on Skaze is a single pixel in a vast, living
+              canvas. Individually distinct, collectively breathtaking. Flaws
+              don't diminish your work — they define it.
+            </p>
+            <blockquote class="about__quote">
+              "The dot in our logo is red because every masterpiece has at least
+              one imperfect pixel — and that's exactly where the story begins."
+            </blockquote>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         FEATURES
+    ══════════════════════════════════════ -->
+    <section class="section" id="features" aria-labelledby="features-title">
+      <div class="container">
+        <span class="section-label">What You Get</span>
+        <h2 class="section-title" id="features-title">
+          Built for creators,<br />pixel by pixel.
+        </h2>
+
+        <div class="features__grid">
+
+          <!-- Feature 1: Explore & Inspire -->
+          <article class="feature-card">
+            <div class="feature-card__icon" aria-hidden="true">🌐</div>
+            <h3 class="feature-card__title">Explore &amp; Inspire</h3>
+            <p class="feature-card__body">
+              Discover work from photographers, digital artists, and
+              illustrators worldwide. A curated feed that learns your aesthetic
+              and surfaces the visuals that move you most — no noise, no
+              distractions.
+            </p>
+          </article>
+
+          <!-- Feature 2: Create Your Profile -->
+          <article class="feature-card">
+            <div class="feature-card__icon" aria-hidden="true">✦</div>
+            <h3 class="feature-card__title">Create Your Profile</h3>
+            <p class="feature-card__body">
+              Build a living portfolio that grows with your craft. Organise
+              your work into collections, add context to each piece, and let
+              your creative identity speak for itself — authentically and
+              imperfectly.
+            </p>
+          </article>
+
+          <!-- Feature 3: Precise Editing -->
+          <article class="feature-card">
+            <div class="feature-card__icon" aria-hidden="true">⬛</div>
+            <h3 class="feature-card__title">Precise Editing</h3>
+            <p class="feature-card__body">
+              Fine-tune your images with our built-in editor and export in the
+              exact aspect ratio your vision demands. Every standard format is
+              supported out of the box.
+            </p>
+            <div class="feature-card__tags" aria-label="Supported aspect ratios">
+              <span class="feature-card__tag">9:16</span>
+              <span class="feature-card__tag">2:3</span>
+              <span class="feature-card__tag">3:4</span>
+              <span class="feature-card__tag">4:5</span>
+              <span class="feature-card__tag">1:1</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         DOWNLOAD CTA
+    ══════════════════════════════════════ -->
+    <section class="download-cta pixel-bg" id="download" aria-labelledby="download-title">
+      <div class="container">
+        <h2 class="download-cta__title" id="download-title">
+          Your next creation<br />starts here.
+        </h2>
+        <p class="download-cta__sub">
+          Join a growing community of visual creators and let your imperfect
+          pixels build something extraordinary.
+        </p>
+        <div class="download-cta__buttons">
+          <a href="#" class="btn btn-primary btn-store" aria-label="Download on the App Store">
+            <span class="btn-store__label">Download on the</span>
+            <span class="btn-store__name">App Store</span>
+          </a>
+          <a href="#" class="btn btn-outline btn-store" aria-label="Get it on Google Play">
+            <span class="btn-store__label">Get it on</span>
+            <span class="btn-store__name">Google Play</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="footer__logo">skaze<span class="dot">.</span></span>
+      <p class="footer__copy">&copy; 2026 Skaze. All rights reserved.</p>
+      <ul class="footer__links">
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const btn = document.getElementById('hamburgerBtn');
+    const nav = document.getElementById('navLinks');
+    btn.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen);
+    });
+    // Close on link click
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded', false);
+      });
+    });
+  </script>
+</body>
+</html>
