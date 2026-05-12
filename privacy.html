@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Polityka Prywatności — Skaze</title>
+<meta name="description" content="Polityka prywatności aplikacji Skaze. Co zbieramy, dlaczego, i jak chronimy Twoje dane." />
+
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --blue: #1769FF;
+    --red: #E10600;
+    --black: #08080A;
+    --black-2: #101013;
+    --black-3: #18181C;
+    --gray: #D9D9D9;
+    --white: #FFFFFF;
+    --font-display: 'Funnel Display', system-ui, sans-serif;
+    --font-serif: 'Instrument Serif', Georgia, serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection { background: var(--red); color: var(--white); }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .container { width: 100%; max-width: 1320px; margin: 0 auto; padding: 0 40px; }
+
+  /* ============ NAV ============ */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 5px 0;
+    background: rgba(8, 8, 10, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+  .logo {
+    display: flex; align-items: center; gap: 8px;
+    text-decoration: none; color: var(--white);
+    transition: opacity 0.2s;
+  }
+  .logo:hover { opacity: 0.85; text-decoration: none; }
+  .logo img {
+    height: 96px;
+    width: auto;
+    display: block;
+  }
+  .footer-brand .logo img { height: 64px; }
+  .logo-text {
+    font-family: var(--font-display);
+    font-weight: 800; font-size: 22px;
+    letter-spacing: -0.04em;
+    color: var(--white);
+    line-height: 1;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .logo-text .dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    background: var(--red);
+    border-radius: 1px;
+    margin-bottom: 2px;
+  }
+  .nav-back {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    transition: color 0.2s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .nav-back:hover { color: var(--white); text-decoration: none; }
+  .nav-back .arrow { transition: transform 0.2s; }
+  .nav-back:hover .arrow { transform: translateX(-3px); }
+
+  /* ============ DOC HEADER ============ */
+  .doc-header {
+    padding: 180px 0 60px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    background: linear-gradient(to bottom, var(--black-2), var(--black));
+  }
+  .doc-meta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 14px;
+    flex-wrap: wrap;
+  }
+  .doc-meta::before {
+    content: ''; width: 28px; height: 1px; background: var(--red);
+  }
+  .doc-meta .sep { color: rgba(255,255,255,0.25); }
+  .doc-meta .dim { color: rgba(255,255,255,0.5); }
+
+  .doc-title {
+    font-size: clamp(44px, 7vw, 88px);
+    font-weight: 700;
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+    margin-bottom: 28px;
+    max-width: 900px;
+  }
+  .doc-title .serif {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--blue);
+    letter-spacing: -0.02em;
+  }
+  .doc-intro {
+    font-size: clamp(17px, 1.4vw, 20px);
+    color: rgba(255, 255, 255, 0.72);
+    max-width: 720px;
+    line-height: 1.6;
+  }
+
+  /* ============ DOC BODY ============ */
+  .doc-body {
+    padding: 80px 0 120px;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .doc-toc {
+    position: sticky;
+    top: 110px;
+  }
+  .doc-toc h4 {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .doc-toc ul {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .doc-toc a {
+    color: rgba(255,255,255,0.6);
+    font-size: 14px;
+    line-height: 1.5;
+    display: flex; gap: 10px;
+    transition: color 0.2s;
+  }
+  .doc-toc a:hover { color: var(--white); text-decoration: none; }
+  .doc-toc a .num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--red);
+    flex-shrink: 0;
+    padding-top: 3px;
+  }
+
+  .doc-content { max-width: 720px; }
+  .doc-section { padding-bottom: 56px; margin-bottom: 56px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .doc-section:last-child { border-bottom: none; margin-bottom: 0; }
+  .doc-section h2 {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: 24px;
+    display: flex; align-items: baseline; gap: 16px;
+  }
+  .doc-section h2 .num {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--red);
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .doc-section p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.78);
+    margin-bottom: 16px;
+  }
+  .doc-section p:last-child { margin-bottom: 0; }
+  .doc-section ul {
+    list-style: none;
+    margin-bottom: 16px;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .doc-section ul li {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.78);
+    padding-left: 24px;
+    position: relative;
+  }
+  .doc-section ul li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 13px;
+    width: 10px; height: 1px;
+    background: var(--red);
+  }
+  .doc-section strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+  .doc-section .callout {
+    margin: 24px 0;
+    padding: 20px 24px;
+    background: rgba(23,105,255,0.06);
+    border-left: 2px solid var(--blue);
+    border-radius: 4px;
+    font-size: 15px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.6;
+  }
+  .doc-section .callout-red {
+    background: rgba(225,6,0,0.06);
+    border-left-color: var(--red);
+  }
+  .doc-section a { color: var(--blue); }
+
+  /* ============ DOC FOOTER STRIP ============ */
+  .doc-cross {
+    padding: 60px 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    background: var(--black-2);
+  }
+  .doc-cross-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .doc-cross-card {
+    padding: 28px 32px;
+    background: var(--black);
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.06);
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.2s;
+    display: block;
+  }
+  .doc-cross-card:hover {
+    border-color: rgba(225,6,0,0.3);
+    transform: translateY(-2px);
+    text-decoration: none;
+  }
+  .doc-cross-card .tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 8px;
+  }
+  .doc-cross-card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+  .doc-cross-card p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.5;
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 60px 0 36px;
+    background: var(--black);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 40px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-brand p {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px; line-height: 1.65;
+    margin-top: 18px; max-width: 340px;
+  }
+  .footer-brand .logo-text { font-size: 26px; }
+  .footer-brand .logo-text .dot { width: 10px; height: 10px; }
+  .footer-col h4 {
+    font-family: var(--font-mono); font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 18px;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col a {
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none; font-size: 14px;
+    transition: color 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .footer-col a:hover { color: var(--white); transform: translateX(3px); text-decoration: none; }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--font-mono); font-size: 11px;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.05em;
+    flex-wrap: wrap; gap: 16px;
+  }
+  .footer-bottom .pixel-mark {
+    display: inline-grid; grid-template-columns: repeat(4, 4px); gap: 1px;
+    margin-right: 6px; vertical-align: middle;
+  }
+  .footer-bottom .pixel-mark span { width: 4px; height: 4px; background: var(--red); }
+
+  /* ============ Responsive ============ */
+  @media (max-width: 980px) {
+    .container { padding: 0 24px; }
+    .doc-header { padding: 130px 0 50px; }
+    .doc-body { grid-template-columns: 1fr; gap: 40px; padding: 50px 0 90px; }
+    .doc-toc { position: static; }
+    .doc-cross-inner { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+  }
+  @media (max-width: 600px) {
+    .doc-section h2 { font-size: 24px; gap: 12px; }
+    .doc-section h2 .num { font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container nav-inner">
+    <a href="index.html" class="logo" aria-label="Skaze home">
+      <img src="logo.png" alt="Skaze" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex'" />
+      <span class="logo-text" style="display:none">Skaze<span class="dot" aria-hidden="true"></span></span>
+    </a>
+    <a href="index.html" class="nav-back">
+      <span class="arrow">←</span> Wróć do strony głównej
+    </a>
+  </div>
+</nav>
+
+<!-- DOC HEADER -->
+<header class="doc-header">
+  <div class="container">
+    <div class="doc-meta">
+      <span>Dokument prawny</span>
+      <span class="sep">/</span>
+      <span class="dim">Wersja 1.0</span>
+      <span class="sep">/</span>
+      <span class="dim">Ostatnia aktualizacja: maj 2026</span>
+    </div>
+    <h1 class="doc-title">Polityka <span class="serif">Prywatności</span></h1>
+    <p class="doc-intro">
+      Dbamy o Twój spokój i Twoje dane. Ta polityka wyjaśnia prosto, co zbieramy i dlaczego.
+    </p>
+  </div>
+</header>
+
+<!-- DOC BODY -->
+<section>
+  <div class="container doc-body">
+    <aside class="doc-toc" aria-label="Spis treści">
+      <h4>Spis treści</h4>
+      <ul>
+        <li><a href="#what"><span class="num">01</span><span>Jakie dane zbieramy</span></a></li>
+        <li><a href="#how"><span class="num">02</span><span>Jak wykorzystujemy dane</span></a></li>
+        <li><a href="#providers"><span class="num">03</span><span>Zewnętrzni dostawcy</span></a></li>
+        <li><a href="#rights"><span class="num">04</span><span>Twoje prawa</span></a></li>
+        <li><a href="#children"><span class="num">05</span><span>Ochrona dzieci</span></a></li>
+        <li><a href="#contact"><span class="num">06</span><span>Kontakt</span></a></li>
+      </ul>
+    </aside>
+
+    <article class="doc-content">
+
+      <div class="doc-section" id="what">
+        <h2><span class="num">01</span> Jakie dane zbieramy?</h2>
+        <ul>
+          <li><strong>Informacje o koncie:</strong> kiedy się rejestrujesz, zbieramy Twój adres e-mail, nazwę użytkownika oraz hasło (w formie zaszyfrowanej).</li>
+          <li><strong>Twoje treści:</strong> przechowujemy zdjęcia, które decydujesz się opublikować, oraz Twoje interakcje (lajki, komentarze).</li>
+          <li><strong>Dane techniczne:</strong> podstawowe informacje o urządzeniu i logach (np. adres IP), które są niezbędne do prawidłowego i bezpiecznego działania aplikacji (np. zapobiegania atakom).</li>
+        </ul>
+      </div>
+
+      <div class="doc-section" id="how">
+        <h2><span class="num">02</span> Jak wykorzystujemy Twoje dane?</h2>
+        <ul>
+          <li>Wyłącznie w celu świadczenia usługi: abyś mógł się logować, publikować zdjęcia i wyświetlać posty innych.</li>
+          <li><strong>Nie sprzedajemy</strong> Twoich danych osobowych firmom trzecim.</li>
+          <li><strong>Nie profilujemy Cię w celach reklamowych.</strong> Skaze nie używa agresywnych algorytmów śledzących Twoje zachowanie poza aplikacją.</li>
+        </ul>
+      </div>
+
+      <div class="doc-section" id="providers">
+        <h2><span class="num">03</span> Zewnętrzni dostawcy (usługi)</h2>
+        <p>Korzystamy z bezpiecznej i sprawdzonej infrastruktury <strong>Supabase</strong> (autoryzacja, baza danych, przechowywanie plików). Twoje dane są tam bezpiecznie szyfrowane.</p>
+      </div>
+
+      <div class="doc-section" id="rights">
+        <h2><span class="num">04</span> Twoje prawa (kontrola nad danymi)</h2>
+        <ul>
+          <li>Masz pełne prawo wglądu w swoje dane.</li>
+          <li>W dowolnym momencie możesz trwale i całkowicie usunąć swoje konto z poziomu ustawień aplikacji (zakładka <strong>Edytuj Profil</strong>). Usunięcie konta natychmiast kasuje wszystkie Twoje zdjęcia, posty, komentarze i lajki z naszych serwerów.</li>
+        </ul>
+        <div class="callout callout-red">
+          <strong>Uwaga:</strong> po wykonaniu tej akcji nie ma możliwości odzyskania danych.
+        </div>
+      </div>
+
+      <div class="doc-section" id="children">
+        <h2><span class="num">05</span> Ochrona dzieci</h2>
+        <p>Aplikacja nie jest przeznaczona dla dzieci poniżej <strong>13 roku życia</strong>. Nie zbieramy świadomie danych od takich osób.</p>
+      </div>
+
+      <div class="doc-section" id="contact">
+        <h2><span class="num">06</span> Kontakt</h2>
+        <p>W razie pytań dotyczących Twojej prywatności napisz do nas na:</p>
+        <div class="callout">
+          <a href="mailto:skazeapp@gmail.com">skazeapp@gmail.com</a>
+        </div>
+      </div>
+
+    </article>
+  </div>
+</section>
+
+<!-- CROSS LINK -->
+<section class="doc-cross">
+  <div class="container">
+    <div class="doc-cross-inner">
+      <a href="terms.html" class="doc-cross-card">
+        <div class="tag">Powiązany dokument</div>
+        <h3>Regulamin →</h3>
+        <p>Zasady korzystania z aplikacji: konto, treści, społeczność.</p>
+      </a>
+      <a href="index.html" class="doc-cross-card">
+        <div class="tag">Wróć do aplikacji</div>
+        <h3>Strona główna →</h3>
+        <p>Social network for photographers. Imperfect pixels, perfect community.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <img src="logo.png" alt="Skaze" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex'" />
+          <span class="logo-text" style="display:none">Skaze<span class="dot" aria-hidden="true"></span></span>
+        </a>
+        <p>A social network for photographers. Imperfect pixels, perfect community. Made in Kraków, used worldwide.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#community">Community</a></li>
+          <li><a href="index.html#download">Download</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="index.html#why">About</a></li>
+          <li><a href="mailto:skazeapp@gmail.com">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Polityka Prywatności</a></li>
+          <li><a href="terms.html">Regulamin</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>
+        <span class="pixel-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        © 2026 Skaze. All pixels reserved.
+      </span>
+      <span>v1.0.0 · build 2026.05 · made with imperfection</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
