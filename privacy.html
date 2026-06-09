@@ -96,6 +96,30 @@
   .nav-back .arrow { transition: transform 0.2s; }
   .nav-back:hover .arrow { transform: translateX(-3px); }
 
+  .lang-switch {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-left: 12px;
+  }
+  .lang-btn {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.75);
+    border: 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 10px;
+    cursor: pointer;
+  }
+  .lang-btn.active {
+    background: rgba(255, 255, 255, 0.14);
+    color: var(--white);
+  }
+
   /* ============ DOC HEADER ============ */
   .doc-header {
     padding: 180px 0 60px;
@@ -365,9 +389,15 @@
       <img src="logo.png" alt="Skaze" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex'" />
       <span class="logo-text" style="display:none">Skaze<span class="dot" aria-hidden="true"></span></span>
     </a>
-    <a href="index.html" class="nav-back">
-      <span class="arrow">←</span> Wróć do strony głównej
-    </a>
+    <div style="display:flex;align-items:center;">
+      <a href="index.html" class="nav-back">
+        <span class="arrow">←</span> <span class="nav-back-text">Wróć do strony głównej</span>
+      </a>
+      <div class="lang-switch" aria-label="Language switch">
+        <button class="lang-btn active" type="button" data-lang="en">EN</button>
+        <button class="lang-btn" type="button" data-lang="pl">PL</button>
+      </div>
+    </div>
   </div>
 </nav>
 
@@ -517,6 +547,187 @@
     </div>
   </div>
 </footer>
+
+
+<script>
+  const i18n = {
+    en: {
+      htmlLang: 'en',
+      title: 'Privacy Policy — Skaze',
+      description: 'Privacy policy for the Skaze app. What we collect, why, and how we protect your data.',
+      navBack: 'Back to homepage',
+      metaLabel: 'Legal document',
+      version: 'Version 1.0',
+      updated: 'Last update: May 2026',
+      h1: 'Privacy <span class="serif">Policy</span>',
+      intro: 'We care about your peace of mind and your data. This policy clearly explains what we collect and why.',
+      tocLabel: 'Table of contents',
+      toc1: 'What data we collect',
+      toc2: 'How we use data',
+      toc3: 'Third-party providers',
+      toc4: 'Your rights',
+      toc5: "Children's privacy",
+      toc6: 'Contact',
+      s1: 'What data do we collect?',
+      s1l1: '<strong>Account information:</strong> when you register, we collect your email address, username, and password (encrypted).',
+      s1l2: '<strong>Your content:</strong> we store photos you choose to publish and your interactions (likes, comments).',
+      s1l3: '<strong>Technical data:</strong> basic device and log information (e.g., IP address) needed to run and secure the app.',
+      s2: 'How do we use your data?',
+      s2l1: 'Only to provide the service: so you can sign in, publish photos, and view other posts.',
+      s2l2: '<strong>We do not sell</strong> your personal data to third parties.',
+      s2l3: '<strong>We do not profile you for advertising.</strong> Skaze does not use aggressive tracking algorithms outside the app.',
+      s3: 'Third-party providers (services)',
+      s3p: 'We use secure and proven <strong>Supabase</strong> infrastructure (auth, database, file storage). Your data is encrypted there.',
+      s4: 'Your rights (data control)',
+      s4l1: 'You have the right to access your data.',
+      s4l2: 'You can permanently delete your account at any time in app settings (<strong>Edit Profile</strong>). Account deletion removes your photos, posts, comments, and likes from our servers.',
+      s4c: '<strong>Note:</strong> this action cannot be undone.',
+      s5: "Children's privacy",
+      s5p: 'The app is not intended for children under <strong>13 years old</strong>. We do not knowingly collect data from them.',
+      s6: 'Contact',
+      s6p: 'If you have privacy questions, email us at:',
+      relTag: 'Related document',
+      relTitle: 'Terms of Service →',
+      relDesc: 'Rules for using the app: account, content, community.',
+      backTag: 'Back to app',
+      backTitle: 'Homepage →',
+      product: 'Product',
+      company: 'Company',
+      legal: 'Legal',
+      features: 'Features',
+      community: 'Community',
+      download: 'Download',
+      about: 'About',
+      contact: 'Contact',
+      privacy: 'Privacy Policy',
+      terms: 'Terms of Service'
+    },
+    pl: {
+      htmlLang: 'pl',
+      title: 'Polityka Prywatności — Skaze',
+      description: 'Polityka prywatności aplikacji Skaze. Co zbieramy, dlaczego, i jak chronimy Twoje dane.',
+      navBack: 'Wróć do strony głównej',
+      metaLabel: 'Dokument prawny',
+      version: 'Wersja 1.0',
+      updated: 'Ostatnia aktualizacja: maj 2026',
+      h1: 'Polityka <span class="serif">Prywatności</span>',
+      intro: 'Dbamy o Twój spokój i Twoje dane. Ta polityka wyjaśnia prosto, co zbieramy i dlaczego.',
+      tocLabel: 'Spis treści',
+      toc1: 'Jakie dane zbieramy',
+      toc2: 'Jak wykorzystujemy dane',
+      toc3: 'Zewnętrzni dostawcy',
+      toc4: 'Twoje prawa',
+      toc5: 'Ochrona dzieci',
+      toc6: 'Kontakt',
+      s1: 'Jakie dane zbieramy?',
+      s1l1: '<strong>Informacje o koncie:</strong> kiedy się rejestrujesz, zbieramy Twój adres e-mail, nazwę użytkownika oraz hasło (w formie zaszyfrowanej).',
+      s1l2: '<strong>Twoje treści:</strong> przechowujemy zdjęcia, które decydujesz się opublikować, oraz Twoje interakcje (lajki, komentarze).',
+      s1l3: '<strong>Dane techniczne:</strong> podstawowe informacje o urządzeniu i logach (np. adres IP), które są niezbędne do prawidłowego i bezpiecznego działania aplikacji (np. zapobiegania atakom).',
+      s2: 'Jak wykorzystujemy Twoje dane?',
+      s2l1: 'Wyłącznie w celu świadczenia usługi: abyś mógł się logować, publikować zdjęcia i wyświetlać posty innych.',
+      s2l2: '<strong>Nie sprzedajemy</strong> Twoich danych osobowych firmom trzecim.',
+      s2l3: '<strong>Nie profilujemy Cię w celach reklamowych.</strong> Skaze nie używa agresywnych algorytmów śledzących Twoje zachowanie poza aplikacją.',
+      s3: 'Zewnętrzni dostawcy (usługi)',
+      s3p: 'Korzystamy z bezpiecznej i sprawdzonej infrastruktury <strong>Supabase</strong> (autoryzacja, baza danych, przechowywanie plików). Twoje dane są tam bezpiecznie szyfrowane.',
+      s4: 'Twoje prawa (kontrola nad danymi)',
+      s4l1: 'Masz pełne prawo wglądu w swoje dane.',
+      s4l2: 'W dowolnym momencie możesz trwale i całkowicie usunąć swoje konto z poziomu ustawień aplikacji (zakładka <strong>Edytuj Profil</strong>). Usunięcie konta natychmiast kasuje wszystkie Twoje zdjęcia, posty, komentarze i lajki z naszych serwerów.',
+      s4c: '<strong>Uwaga:</strong> po wykonaniu tej akcji nie ma możliwości odzyskania danych.',
+      s5: 'Ochrona dzieci',
+      s5p: 'Aplikacja nie jest przeznaczona dla dzieci poniżej <strong>13 roku życia</strong>. Nie zbieramy świadomie danych od takich osób.',
+      s6: 'Kontakt',
+      s6p: 'W razie pytań dotyczących Twojej prywatności napisz do nas na:',
+      relTag: 'Powiązany dokument',
+      relTitle: 'Regulamin →',
+      relDesc: 'Zasady korzystania z aplikacji: konto, treści, społeczność.',
+      backTag: 'Wróć do aplikacji',
+      backTitle: 'Strona główna →',
+      product: 'Product',
+      company: 'Company',
+      legal: 'Legal',
+      features: 'Features',
+      community: 'Community',
+      download: 'Download',
+      about: 'About',
+      contact: 'Contact',
+      privacy: 'Polityka Prywatności',
+      terms: 'Regulamin'
+    }
+  };
+
+  const setHtml = (selector, value) => {
+    const el = document.querySelector(selector);
+    if (el && typeof value === 'string') el.innerHTML = value;
+  };
+
+  const applyLanguage = (lang) => {
+    const t = i18n[lang] || i18n.en;
+    document.documentElement.lang = t.htmlLang;
+    document.title = t.title;
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute('content', t.description);
+
+    setHtml('.nav-back-text', t.navBack);
+    setHtml('.doc-meta span:nth-child(1)', t.metaLabel);
+    setHtml('.doc-meta span:nth-child(3)', t.version);
+    setHtml('.doc-meta span:nth-child(5)', t.updated);
+    setHtml('.doc-title', t.h1);
+    setHtml('.doc-intro', t.intro);
+    setHtml('.doc-toc h4', t.tocLabel);
+    setHtml('.doc-toc li:nth-child(1) a span:nth-child(2)', t.toc1);
+    setHtml('.doc-toc li:nth-child(2) a span:nth-child(2)', t.toc2);
+    setHtml('.doc-toc li:nth-child(3) a span:nth-child(2)', t.toc3);
+    setHtml('.doc-toc li:nth-child(4) a span:nth-child(2)', t.toc4);
+    setHtml('.doc-toc li:nth-child(5) a span:nth-child(2)', t.toc5);
+    setHtml('.doc-toc li:nth-child(6) a span:nth-child(2)', t.toc6);
+
+    setHtml('#what h2', '<span class="num">01</span> ' + t.s1);
+    setHtml('#what li:nth-child(1)', t.s1l1);
+    setHtml('#what li:nth-child(2)', t.s1l2);
+    setHtml('#what li:nth-child(3)', t.s1l3);
+    setHtml('#how h2', '<span class="num">02</span> ' + t.s2);
+    setHtml('#how li:nth-child(1)', t.s2l1);
+    setHtml('#how li:nth-child(2)', t.s2l2);
+    setHtml('#how li:nth-child(3)', t.s2l3);
+    setHtml('#providers h2', '<span class="num">03</span> ' + t.s3);
+    setHtml('#providers p', t.s3p);
+    setHtml('#rights h2', '<span class="num">04</span> ' + t.s4);
+    setHtml('#rights li:nth-child(1)', t.s4l1);
+    setHtml('#rights li:nth-child(2)', t.s4l2);
+    setHtml('#rights .callout', t.s4c);
+    setHtml('#children h2', '<span class="num">05</span> ' + t.s5);
+    setHtml('#children p', t.s5p);
+    setHtml('#contact h2', '<span class="num">06</span> ' + t.s6);
+    setHtml('#contact p', t.s6p);
+
+    setHtml('.doc-cross-card:nth-child(1) .tag', t.relTag);
+    setHtml('.doc-cross-card:nth-child(1) h3', t.relTitle);
+    setHtml('.doc-cross-card:nth-child(1) p', t.relDesc);
+    setHtml('.doc-cross-card:nth-child(2) .tag', t.backTag);
+    setHtml('.doc-cross-card:nth-child(2) h3', t.backTitle);
+
+    setHtml('.footer-col:nth-child(2) h4', t.product);
+    setHtml('.footer-col:nth-child(3) h4', t.company);
+    setHtml('.footer-col:nth-child(4) h4', t.legal);
+    setHtml('.footer-col:nth-child(2) li:nth-child(1) a', t.features);
+    setHtml('.footer-col:nth-child(2) li:nth-child(2) a', t.community);
+    setHtml('.footer-col:nth-child(2) li:nth-child(3) a', t.download);
+    setHtml('.footer-col:nth-child(3) li:nth-child(1) a', t.about);
+    setHtml('.footer-col:nth-child(3) li:nth-child(2) a', t.contact);
+    setHtml('.footer-col:nth-child(4) li:nth-child(1) a', t.privacy);
+    setHtml('.footer-col:nth-child(4) li:nth-child(2) a', t.terms);
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+  };
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
+  });
+
+  applyLanguage('en');
+</script>
 
 </body>
 </html>

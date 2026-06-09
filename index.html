@@ -91,7 +91,31 @@
   .footer-brand .logo-text { font-size: 26px; }
   .footer-brand .logo-text .dot { width: 10px; height: 10px; }
 
-  .nav-links { display: flex; align-items: center; gap: 40px; }
+  .nav-links { display: flex; align-items: center; gap: 16px; }
+
+  .lang-switch {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-right: 8px;
+  }
+  .lang-btn {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.75);
+    border: 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 10px;
+    cursor: pointer;
+  }
+  .lang-btn.active {
+    background: rgba(255, 255, 255, 0.14);
+    color: var(--white);
+  }
   .nav-links a:not(.btn) {
     color: rgba(255, 255, 255, 0.65);
     text-decoration: none; font-size: 14px; font-weight: 400;
@@ -840,6 +864,10 @@
       <span class="logo-text" style="display:none">Skaze<span class="dot" aria-hidden="true"></span></span>
     </a>
     <div class="nav-links">
+      <div class="lang-switch" aria-label="Language switch">
+        <button class="lang-btn active" type="button" data-lang="en">EN</button>
+        <button class="lang-btn" type="button" data-lang="pl">PL</button>
+      </div>
       <a href="#why">Why Skaze</a>
       <a href="#features">Features</a>
       <a href="#community">Community</a>
@@ -1286,6 +1314,81 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
     els.forEach(el => io.observe(el));
   })();
+
+  const i18n = {
+    en: {
+      htmlLang: 'en',
+      title: 'Skaze — A social network for photographers',
+      description: 'Skaze is the social network built for photographers. Share work that matters, get real feedback, and find your people. Imperfect pixels, perfect community.',
+      navWhy: 'Why Skaze',
+      navFeatures: 'Features',
+      navCommunity: 'Community',
+      navApp: 'Get the app <span class=\"arrow\">→</span>',
+      status: 'Now in open beta',
+      heroTitle: 'A social network<br>built for <span class=\"serif\">photographers</span>,<br>not the <span class=\"strike\">algorithm</span>.',
+      heroLede: 'Where photographers post, critique, and grow together. No filler. No chasing reach. Just imperfect pixels and the people who make them.',
+      heroIOS: 'Download for iOS <span class=\"arrow\">→</span>',
+      heroAndroid: 'Download for Android <span class=\"arrow\">→</span>',
+      heroNote: 'Free · No ads · <span class=\"accent\">No subscription</span>',
+      legalPrivacy: 'Privacy Policy',
+      legalTerms: 'Terms of Service'
+    },
+    pl: {
+      htmlLang: 'pl',
+      title: 'Skaze — Sieć społecznościowa dla fotografów',
+      description: 'Skaze to sieć społecznościowa stworzona dla fotografów. Publikuj ważne zdjęcia, dostawaj prawdziwy feedback i znajdź swoją społeczność.',
+      navWhy: 'Dlaczego Skaze',
+      navFeatures: 'Funkcje',
+      navCommunity: 'Społeczność',
+      navApp: 'Pobierz aplikację <span class=\"arrow\">→</span>',
+      status: 'Teraz w otwartej becie',
+      heroTitle: 'Sieć społecznościowa<br>stworzona dla <span class=\"serif\">fotografów</span>,<br>a nie dla <span class=\"strike\">algorytmu</span>.',
+      heroLede: 'Miejsce, gdzie fotografowie publikują, komentują i rozwijają się razem. Bez zapychaczy. Bez gonienia zasięgów. Tylko niedoskonałe piksele i ludzie, którzy je tworzą.',
+      heroIOS: 'Pobierz na iOS <span class=\"arrow\">→</span>',
+      heroAndroid: 'Pobierz na Androida <span class=\"arrow\">→</span>',
+      heroNote: 'Za darmo · Bez reklam · <span class=\"accent\">Bez subskrypcji</span>',
+      legalPrivacy: 'Polityka Prywatności',
+      legalTerms: 'Regulamin'
+    }
+  };
+
+  const setHtml = (selector, value) => {
+    const el = document.querySelector(selector);
+    if (el && typeof value === 'string') el.innerHTML = value;
+  };
+
+  const applyLanguage = (lang) => {
+    const t = i18n[lang] || i18n.en;
+    document.documentElement.lang = t.htmlLang;
+    document.title = t.title;
+    const meta = document.querySelector('meta[name=\"description\"]');
+    if (meta) meta.setAttribute('content', t.description);
+
+    setHtml('.nav-links a[href=\"#why\"]', t.navWhy);
+    setHtml('.nav-links a[href=\"#features\"]', t.navFeatures);
+    setHtml('.nav-links a[href=\"#community\"]', t.navCommunity);
+    setHtml('.nav-links a.btn-primary', t.navApp);
+    setHtml('.hero-status span:nth-child(2)', t.status);
+    setHtml('.hero h1', t.heroTitle);
+    setHtml('.hero p.lede', t.heroLede);
+    setHtml('.hero-cta a.btn-primary', t.heroIOS);
+    setHtml('.hero-cta a.btn-secondary', t.heroAndroid);
+    setHtml('.hero-cta-note', t.heroNote);
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+
+    document.querySelectorAll('.footer-col h4')[3].textContent = lang === 'pl' ? 'Prawo' : 'Legal';
+    setHtml('.footer-col:nth-of-type(4) li:nth-child(1) a', t.legalPrivacy);
+    setHtml('.footer-col:nth-of-type(4) li:nth-child(2) a', t.legalTerms);
+  };
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
+  });
+
+  applyLanguage('en');
 </script>
 
 </body>
