@@ -1331,6 +1331,7 @@
       heroAndroid: 'Download for Android <span class=\"arrow\">→</span>',
       heroNote: 'Free · No ads · <span class=\"accent\">No subscription</span>',
       legalPrivacy: 'Privacy Policy',
+      legalHeading: 'Legal',
       legalTerms: 'Terms of Service'
     },
     pl: {
@@ -1348,6 +1349,7 @@
       heroAndroid: 'Pobierz na Androida <span class=\"arrow\">→</span>',
       heroNote: 'Za darmo · Bez reklam · <span class=\"accent\">Bez subskrypcji</span>',
       legalPrivacy: 'Polityka Prywatności',
+      legalHeading: 'Prawo',
       legalTerms: 'Regulamin'
     }
   };
@@ -1379,7 +1381,7 @@
       btn.classList.toggle('active', btn.dataset.lang === lang);
     });
 
-    document.querySelectorAll('.footer-col h4')[3].textContent = lang === 'pl' ? 'Prawo' : 'Legal';
+    setHtml('.footer-col:nth-of-type(4) h4', t.legalHeading);
     setHtml('.footer-col:nth-of-type(4) li:nth-child(1) a', t.legalPrivacy);
     setHtml('.footer-col:nth-of-type(4) li:nth-child(2) a', t.legalTerms);
   };
